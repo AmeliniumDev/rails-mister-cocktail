@@ -15,7 +15,6 @@ class DosesController < ApplicationController
       # POST   /cocktails/:cocktail_id/doses(.:format)
       # doses#create
     else
-      # redirect_to new_cocktail_dose_path
       render :new
     end
   end

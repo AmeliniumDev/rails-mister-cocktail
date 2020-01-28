@@ -1,6 +1,14 @@
-<h1>Create new cocktail</h1>
-<p>to do: name form</p>
-<p>to do: dose</p>
-<p>to do: ingredient</p>
-<p>To do: create button</p>
-<p><%= link_to "Go back", cocktails_path %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>Create a new cocktail</h1>
+
+      <%= simple_form_for @cocktail do |f| %>
+        <%= f.input :name %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+      <p><%= link_to "Go back", cocktails_path, class: "btn btn-primary btn-lg" %></p>
+    </div>
+  </div>
+</div>
+

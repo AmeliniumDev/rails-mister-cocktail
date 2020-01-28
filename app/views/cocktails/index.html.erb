@@ -1,11 +1,22 @@
-<h1>Cocktails</h1>
-<% @cocktails.each do |cocktail| %>
-  <div>
-    <h2><%= link_to "#{cocktail.name}", cocktail_path(cocktail.id) %></h2>
-    <h3>Ingredients:</h3>
-    <p><%= cocktail.dose %> <%= cocktail.ingredient %></p>
-  </div>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'cocktails-at-sunset.jpg' %>');">
+  <div class="banner-content">
+    <h1>Cocktails</h1>
+    <%= link_to "Add new cocktail", new_cocktail_path, class: "btn btn-primary btn-lg" %>
 
-<p><%= link_to "Add new cocktail", new_cocktail_path %></p>
-<p></p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/500x400/?cocktail');">
+          <div class="card-description">
+            <h2><%= link_to "#{cocktail.name}", cocktail_path(cocktail.id) %></h2>
+            <!-- <h3>Ingredients:</h3>
+            <p><%= cocktail.doses %> <%= cocktail.ingredients %></p> -->
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

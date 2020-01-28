@@ -1,10 +1,49 @@
-<h1><%= @cocktail.name %></h1>
-<h2>Ingredients</h2>
-<!-- iteration cocktail.doses.each do |dose|
-dose.description
-dose.ingredient.name
-link_to "delete dose"
-link_to Add dose
- end -->
-<p><%= cocktail.dose %> <%= cocktail.ingredient %></p>
-<p><%= link_to "Go back", cocktails_path %></p>
+<div class="container">
+  <h1><%= @cocktail.name %></h1>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h2>Recipe</h2>
+      <table class="table table-bordered">
+        <tbody>
+          <thead>
+            <th>Ingredient</th>
+            <th>Description</th>
+            <th>Action</th>
+          </thead>
+          <% @cocktail.doses.each do |dose| %>
+            <tr>
+              <td><%= dose.ingredient.name %></td>
+              <td><%= dose.description %></td>
+              <td>
+                <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="fa fa-trash destroy_dose"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <div class="col-sm-12 col-md-6">
+    <!-- _new.html.rb - added underscore to work - required whenever rendering a partial -->
+    <!-- rendering page within the page -->
+    <%= render 'doses/new', cocktail: @cocktail, dose: @dose %>
+  </div>
+  <p><%= link_to "Go back", cocktails_path, class: "btn btn-primary btn-lg" %></p>
+</div>
+
+<!-- new_cocktail_dose_path -->
+
+  <!-- iteration cocktail.doses.each do |dose|
+  dose.description
+  dose.ingredient.name
+  link_to "delete dose"
+  link_to Add dose
+   end -->
+
+
+
+
+
+
+
