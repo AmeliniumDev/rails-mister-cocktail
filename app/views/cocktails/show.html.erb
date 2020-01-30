@@ -1,5 +1,6 @@
 <div class="container">
   <h1><%= @cocktail.name %></h1>
+  <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Recipe</h2>
